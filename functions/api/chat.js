@@ -38,7 +38,10 @@ Be helpful, friendly, clear and accurate.
 Give simple explanations when appropriate.
 `,
 
-                    input: messages
+                    input: messages.map(m => ({
+    role: m.role,
+    content: m.content
+}))
                 })
             }
         );
