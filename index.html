@@ -347,14 +347,14 @@ h2 a{transition:color .3s,text-shadow .3s}h2 a:hover{color:var(--cy);text-shadow
   <h2><a href="#checkout">Simple pricing</a></h2>
   <p class="lead">Start free. Upgrade when your team grows. All prices are in Pakistani rupees (PKR).</p>
   <div class="cards">
-    <article class="card"><h3>Free</h3><div class="amt">0 <span class="cur">PKR</span> <small>/ month</small></div><p>For individuals trying QIRA out.</p><ul><li>1 workspace</li><li>5 GB of data</li><li>Community support</li></ul><a class="btn ghost" href="https://example.com/buy?plan=free" target="_blank" rel="noopener">Start free</a></article>
+    <article class="card"><h3>Free</h3><div class="amt">0 <span class="cur">PKR</span> <small>/ month</small></div><p>For individuals trying QIRA out.</p><ul><li>1 workspace</li><li>5 GB of data</li><li>Community support</li></ul><a class="btn ghost" href="https://qira-ai.pages.dev/buy?plan=free" target="_blank" rel="noopener">Start free</a></article>
     <article class="card"><h3>Newbie</h3><div class="amt">150 <span class="cur">PKR</span> <small>/ seat / month</small></div><p>A simple start for small projects.</p><ul><li>3 workspaces</li><li>50 GB of data</li><li>Basic AI assistant</li><li>Weekly progress reports</li><li>Email support</li></ul><a class="btn ghost" href="#checkout/newbie">Buy Newbie</a></article>
     <article class="card hot"><h3>Adventure</h3><div class="amt">300 <span class="cur">PKR</span> <small>/ seat / month</small></div><p>For growing teams that need more power.</p><ul><li>Everything in Newbie</li><li>500 GB of data</li><li>Full API access</li><li>Automations and workflows</li><li>Advanced analytics</li><li>Priority support</li></ul><a class="btn main" href="#checkout/adventure">Buy Adventure</a></article>
     <article class="card"><h3>Explorer</h3><div class="amt">500 <span class="cur">PKR</span> <small>/ seat / month</small></div><p>For advanced users who want deep control.</p><ul><li>Everything in Adventure</li><li>2 TB of data</li><li>Custom model tuning</li><li>Unlimited API calls</li><li>Custom integrations</li><li>Single sign-on</li><li>24/7 chat support</li></ul><a class="btn main" href="#checkout/explorer">Buy Explorer</a></article>
     <article class="card"><h3>Expensive</h3><div class="amt">1000 <span class="cur">PKR</span> <small>/ seat / month</small></div><p>Everything, with the highest limits and support.</p><ul><li>Everything in Explorer</li><li>10 TB of data</li><li>Private model hosting</li><li>Audit logs and role-based access</li><li>Dedicated success manager</li><li>Team training sessions</li><li>Early access to new features</li><li>Custom SLA</li></ul><a class="btn main" href="#checkout/expensive">Buy Expensive</a></article>
   </div>
   <div class="tags"><span>Secure checkout</span><span>Cancel anytime</span><span>14-day money-back guarantee</span><span>Encryption on every plan</span><span>Free updates</span></div>
-  <p class="note">Paid plans open a checkout page where you pick a payment method. Need something custom? <a href="https://example.com/buy?plan=enterprise" target="_blank" rel="noopener" style="color:var(--cy)">Contact sales</a> about Enterprise. Card and bank details are always entered on the payment provider's secure page.</p>
+  <p class="note">Paid plans open a checkout page where you pick a payment method. Need something custom? <a href="https://qira-ai.pages.dev/buy?plan=enterprise" target="_blank" rel="noopener" style="color:var(--cy)">Contact sales</a> about Enterprise. Card and bank details are always entered on the payment provider's secure page.</p>
 </section>
 
 <section id="team" class="dark">
@@ -440,8 +440,8 @@ h2 a{transition:color .3s,text-shadow .3s}h2 a:hover{color:var(--cy);text-shadow
 
 <footer><div class="cols"><div><h4>Project</h4><a href="#abilities">What it does</a><a href="#about">Vision</a><a href="#features">Capabilities</a><a href="#progress">Progress</a><a href="#roadmap">Roadmap</a></div><div><h4>Explore</h4><a href="#usecases">Use cases</a><a href="#trust">Trust and safety</a><a href="#pricing">Pricing</a></div><div><h4>Company</h4><a href="#team">Team</a><a href="#why">Why us</a><a href="#join">Contact</a></div></div>© 2026 QIRA (Quick Intelligent Response Assistant) Project. Built with care.</footer>
 
-<!-- Talk To Qira floating button (change href to your real chat link) -->
-<a class="talk" id="talk-qira" href="https://example.com/qira-chat" target="_blank" rel="noopener" aria-label="Talk To Qira">
+<!-- Talk To Qira floating button -->
+<a class="talk" id="talk-qira" href="https://qira-ai.pages.dev/chat/" aria-label="Talk To Qira">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>
   <span>Talk To Qira</span><i aria-hidden="true"></i>
 </a>
@@ -474,7 +474,7 @@ h2 a{transition:color .3s,text-shadow .3s}h2 a:hover{color:var(--cy);text-shadow
 <script>
 (function(){
   var main=document.getElementById('top'),ck=document.getElementById('checkout'),n=1;
-  var PAY='https://example.com/pay'; /* replace with your payment provider link */
+  var PAY='https://qira-ai.pages.dev/pay'; /* replace with your payment provider link */
   var PLANS={newbie:{n:'Newbie',p:150},adventure:{n:'Adventure',p:300},explorer:{n:'Explorer',p:500},expensive:{n:'Expensive',p:1000}};
   var names={visa:'Visa',mastercard:'Mastercard',amex:'American Express',paypal:'PayPal',applepay:'Apple Pay',googlepay:'Google Pay',jazzcash:'JazzCash',easypaisa:'Easypaisa',bank:'Bank transfer',sepa:'Direct debit'};
   function val(k){return document.querySelector('input[name='+k+']:checked').value}
