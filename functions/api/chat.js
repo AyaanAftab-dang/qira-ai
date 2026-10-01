@@ -5,43 +5,49 @@ export async function onRequestPost(context) {
 
         if (!messages || !Array.isArray(messages)) {
             return new Response(
-                JSON.stringify({
-                    error: "Invalid messages"
-                }),
+                JSON.stringify({ error: "Invalid messages" }),
                 {
                     status: 400,
-                    headers: {
-                        "Content-Type": "application/json"
-                    }
+                    headers: { "Content-Type": "application/json" }
                 }
             );
         }
 
+        const contents = messages.map(m => ({
+            role: m.role === "assistant" ? "model" : "user",
+            parts: [
+                {
+                    text: m.content
+                }
+            ]
+        }));
+
         const response = await fetch(
-            "https://api.openai.com/v1/responses",
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.8-flash:generateContent",
             {
                 method: "POST",
 
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${context.env.OPENAI_API_KEY}`
+                    "x-goog-api-key": context.env.OPENAI_API_KEY
                 },
 
                 body: JSON.stringify({
-                    model: "gpt-5.6-luna",
-
-                    instructions: `
+                    system_instruction: {
+                        parts: [
+                            {
+                                text: `
 You are QIRA,
 Quick Intelligent Response Assistant.
 
 Be helpful, friendly, clear and accurate.
 Give simple explanations when appropriate.
-`,
+`
+                            }
+                        ]
+                    },
 
-                    input: messages.map(m => ({
-    role: m.role,
-    content: m.content
-}))
+                    contents: contents
                 })
             }
         );
@@ -53,7 +59,7 @@ Give simple explanations when appropriate.
                 JSON.stringify({
                     error:
                         data.error?.message ||
-                        "AI request failed"
+                        "Gemini request failed"
                 }),
                 {
                     status: response.status,
@@ -64,12 +70,14 @@ Give simple explanations when appropriate.
             );
         }
 
+        const reply =
+            data.candidates?.[0]?.content?.parts
+                ?.map(part => part.text || "")
+                .join("") ||
+            "I couldn't generate a response.";
+
         return new Response(
-            JSON.stringify({
-                reply:
-                    data.output_text ||
-                    "I couldn't generate a response."
-            }),
+            JSON.stringify({ reply }),
             {
                 status: 200,
                 headers: {
